@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var Note = mongoose.model('Note');
 
-/* GET home page. */
+/* Display notes */
 router.get('/', function(req, res, next) {
-  res.render('index.html');
+  res.render('notes.html');
 });
 
 module.exports = router;
