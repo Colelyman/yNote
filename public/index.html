@@ -61,19 +61,16 @@
   </div>
 
 
-
-
-
-
-
-
-<div class="row">
-<div class="col-md-4 col-centered">
-  <div class="note">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pulvinar rhoncus risus, vel ornare lacus sagittis sit amet. Duis vel sem magna. Proin pulvinar velit eleifend ligula ultrices vestibulum. Nunc posuere dolor eu mauris feugiat dignissim.</p>
+<div ng-repeat="x in notes">
+ <div class="row">
+   <div class="col-md-4 col-centered">
+      <div class="note">
+          <p>{{x.body}}</p>
+      </div>
+    </div>
   </div>
 </div>
-</div>
+
 
 </body>
 </html>
