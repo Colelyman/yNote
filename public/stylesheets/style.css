@@ -6,3 +6,36 @@ body {
 a {
   color: #00B7FF;
 }
+
+.col-centered{
+float: none;
+margin: 0 auto;
+}
+.note {
+    position:relative;
+    overflow:hidden; /* hides part of the box-shadow */
+    padding:20px;
+    color:#000;
+    background:#ffff88;
+}
+
+.note:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    border-width:0 23px 23px 0;
+    border-style:solid;
+    border-color:#ebeb00 #fff;
+    /* css3 extras */
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+                      -1px 1px 1px rgba(0,0,0,0.2);
+       -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+                      -1px 1px 1px rgba(0,0,0,0.2);
+            box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+                      -1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.more {
+    text-align:center;
+}
