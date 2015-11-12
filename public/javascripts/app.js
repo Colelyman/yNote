@@ -35,9 +35,6 @@ angular.module('yNoteApp', [])
         $scope.showModal = true;
     };
 
-
-
-
     //submit note into database
     $scope.submitNote = function() {
         var note = {title:$scope.data.noteTitle,body:$scope.data.noteBody,tags:$scope.data.noteTags.split(',')};
@@ -49,19 +46,14 @@ angular.module('yNoteApp', [])
             $scope.data.noteTags = '';
 
         });
-
-
-
     };
 
-
     //angular.element(document).ready($scope.getAll());
-    
-
-
-
-
-
 
   }
-]);
+])
+.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
