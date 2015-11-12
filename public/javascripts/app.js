@@ -4,7 +4,7 @@ angular.module('yNoteApp', [])
   function($scope, $http){
 
     $scope.notes = [];
-
+    $scope.showModal = false;
 
 
 
@@ -14,7 +14,18 @@ angular.module('yNoteApp', [])
       });
     };
 
-    angular.element(document).ready($scope.getAll());
+    $scope.getOne = function(note) {
+        alert(JSON.stringify(note));
+    };
+
+
+    $scope.createNew = function() {
+        $('.modal-title').text('Create New Note');
+        $scope.showModal = true;
+    };
+
+
+    //angular.element(document).ready($scope.getAll());
     
 
 

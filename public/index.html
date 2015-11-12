@@ -16,6 +16,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
   <script src="javascripts/app.js"></script>
+  <script src="javascripts/modal.js"></script>
 </head>
 <body ng-controller="yNoteCtrl">
   <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" >
@@ -32,7 +33,10 @@
       <nav id="bs-navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li>
-            <a href="#">my notes</a>
+            <a href="#" ng-click="getAll()">my notes</a>
+          </li>
+          <li>
+            <a href="#" ng-click="createNew()">Create new note</a>
           </li>
           <li>
             <a href="#">about</a>
@@ -71,6 +75,40 @@
     </div>
   </div>
 </div>
+
+
+
+
+          <!-- modal for creating and editing notes -->    
+          <modal title="" visible="showModal">
+            <form role="form" ng-submit="submitStudent()">
+              <div class="form-group">
+                <label for="title">New Note:</label>
+                <input id="note_title" type="text" class="form-control" ng-model="data.noteTitle" placeholder="Title" ng-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="body">Body:</label>
+                <textarea id="note_body" rows="4" class="form-control" ng-model="data.noteBody" placeholder="Write your note here...." ng-required="true">Enter text here...</textarea>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="gpa">Tags:</label>
+                <input id="note_tags" type="text" class="form-control" ng-model="data.noteTags" placeholder="Tags" ng-required="true" />
+              </div>
+              
+
+
+              <button class="btn btn-default">Save</button>
+            </form>
+          </modal>
+          <!-- end of modal for creating and editing notes -->
+
+
+
+
+
 
 
 </body>
