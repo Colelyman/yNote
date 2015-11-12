@@ -27,6 +27,12 @@ angular.module('yNoteApp', [])
     };
 
 
+    $scope.delete = function(noteid) {
+        alert(nodeid);
+        $http.delete('/api/notes/' + roleid + '/remove').success(function (data, status) {
+            console.log(data);
+        });
+    }
 
     //bring up popup with form to create new note
     $scope.createNew = function() {

@@ -38,7 +38,7 @@ router.post('/notes', function(req, res, next) {
 });
 
 router.delete('/notes/:note/remove', function(req, res, next) {
-    
+    console.log("in Delete Route");
 });
 
 module.exports = router;
