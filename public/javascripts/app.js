@@ -27,12 +27,18 @@ angular.module('yNoteApp', [])
     };
 
 
+
+    //bring up popup with form to create new note
     $scope.createNew = function() {
         editing = -1;
         $('.modal-title').text('Create New Note');
         $scope.showModal = true;
     };
 
+
+
+
+    //submit note into database
     $scope.submitNote = function() {
         var note = {title:$scope.data.noteTitle,body:$scope.data.noteBody,tags:$scope.data.noteTags.split(',')};
         $scope.showModal = false;
