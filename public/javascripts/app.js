@@ -3,14 +3,24 @@ angular.module('yNoteApp', [])
   '$scope', '$http',
   function($scope, $http){
 
-    $scope.notes = [
-      {title:'Test Comment', body:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pulvinar rhoncus risus, vel ornare lacus sagittis sit amet. Duis vel sem magna. Proin pulvinar velit eleifend ligula ultrices vestibulum. Nunc posuere dolor eu mauris feugiat dignissim.'}
-    ];
+    $scope.notes = [];
+
+
+
+
+    $scope.getAll = function() {
+      return $http.get('/api/notes').success(function(data){
+         angular.copy(data, $scope.notes);
+      });
+    };
+
+    angular.element(document).ready($scope.getAll());
+    
 
 
 
 
 
 
-    }
+  }
 ]);

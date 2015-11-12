@@ -17,6 +17,8 @@ margin: 0 auto;
     padding:20px;
     color:#000;
     background:#ffff88;
+    box-shadow: -5px 5px 5px #888888;
+    margin-bottom:40px;
 }
 
 .note:before {
