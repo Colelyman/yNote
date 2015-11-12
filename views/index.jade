@@ -16,7 +16,7 @@ html(lang='en', ng-app='yNoteApp')
     script(src='javascripts/app.js')
     script(src='javascripts/modal.js')
   body(ng-controller='yNoteCtrl')
-    header#top.navbar.navbar-static-top.bs-docs-nav(role='banner')
+    header#top.navbar.navbar-default.navbar-fixed-top.bs-docs-nav(role='banner')
       .container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', dta-toggle='collapse', data-target='#bs-navbar', aria-controls='bs-navbar', aria-expanded='false')
@@ -47,7 +47,7 @@ html(lang='en', ng-app='yNoteApp')
                 |  help
     .container-fluid
       .row
-        .col-md-4.col-centered
+        .col-md-12.col-centered
           if(!user)
             a(href="/login") Login
             br
@@ -56,7 +56,7 @@ html(lang='en', ng-app='yNoteApp')
             a(href="/logout") Logout
             div(ng-repeat='x in notes | reverse')
               .row
-                .col-md-4.col-centered
+                .col-lg-4.col-centered
                   .note
                     .note-title {{x.title}}
                     p {{x.body}}
