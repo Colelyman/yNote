@@ -14,7 +14,7 @@ router.get('/notes', function(req, res, next) {
 /* GET json of one note */
 
 router.param('note', function(req, res, next, id) {
-  var query = Note.findById(id);
+  var query = Note.find('{_id:' + id + ', username:' + req.user.username + '}');
   query.exec(function(err, note) {
     if(err) { return next(err); }
     if(!note) { return next(new Error("The note cannot be found!!")); }

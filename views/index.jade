@@ -65,7 +65,8 @@ html(lang='en', ng-app='yNoteApp')
     modal(title='', visible='showModal')
       form(role='form', ng-submit='submitNote()')
         .form-group
-          label(for='title') New Note:
+          label(for='title') New Note for 
+            span(ng-model="data.username") #{user.username}:
           input#note_title.form-control(type='text', ng-model='data.noteTitle', placeholder='Title', ng-required='true')
         .form-group
           label(for='body') Body:

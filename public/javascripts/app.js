@@ -43,7 +43,7 @@ angular.module('yNoteApp', [])
 
     //submit note into database
     $scope.submitNote = function() {
-        var note = {title:$scope.data.noteTitle,body:$scope.data.noteBody,tags:$scope.data.noteTags.split(',')};
+        var note = {username:$scope.data.username,title:$scope.data.noteTitle,body:$scope.data.noteBody,tags:$scope.data.noteTags.split(',')};
         $scope.showModal = false;
 	return $http.post('/api/notes', note).success(function(data){
             $scope.getAll();
