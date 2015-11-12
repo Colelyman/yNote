@@ -52,11 +52,14 @@ angular.module('yNoteApp', [])
       console.log("In $scope.register");
       $http.post('/register', user)
       .then(function(data) {
-        alert("New user created, welcome to the club, " + user.username + "!!");
-        console.log("This is what data is: " + JSON.stringify(data));
+        $scope.registerAlert = { type : 'alert alert-success', msg : 'You are successfully registered! Welcome to the club', show : true};
+        setTimeout(function() {
+          $window.location.href = '/';
+        }, 1000);
       },
       function(err) {
         console.log("This is the error " + JSON.stringify(err));
+        $scope.registerAlert = { type : 'alert alert-danger', msg : 'There was a problem registering, try a different username.', show : true};
       });
     };
 
@@ -64,11 +67,14 @@ angular.module('yNoteApp', [])
       $http.post('/login', user)
       .then(function(data) {
         console.log("You have been logged in, " + user.username);
-        console.log(JSON.stringify(data));
-        $window.location.href = '/';
+        $scope.loginAlert = { type : 'alert alert-success', msg : 'You are successfully logged in!', show : true};
+        setTimeout(function() {
+          $window.location.href = '/';
+        }, 1000);
       },
       function(err) {
         console.log("This is the error " + JSON.stringify(err));
+        $scope.loginAlert = { type : 'alert alert-danger', msg : 'There was a problem loggin in, try again', show : true};
       });
     }
 

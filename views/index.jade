@@ -24,42 +24,43 @@ html(lang='en', ng-app='yNoteApp')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='#') yNote
+          a.navbar-brand(href='/') yNote
         nav#bs-navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             if(user)
               li
-                a(href='#', ng-click='getAll()') my notes
+                a(href='#', ng-click='getAll()') #{user.username}'s notes
               li
-                a(href='#', ng-click='createNew()') Create new note
-            li
-              a(href='#') about
-            li
-              a(href='#') api
+                a(href='#', ng-click='createNew()') create new note
           ul.nav.navbar-nav.navbar-right
             li
-              a(href='#')
-                i.fa.fa-user
-                |  log in
-            li
-              a(href='#')
-                i.fa.fa-question
-                |  help
+              if(!user)
+                a(href='/login')
+                  i.fa.fa-user
+                  |  log in
+              else
+                a(href='/logout')
+                  i.fa.fa-user
+                  |  log out
     .container-fluid
       .row
-        .col-md-12.col-centered
+        .col-md-4.col-centered(style='text-align: center')
           if(!user)
-            a(href="/login") Login
+            h1 Welcome to yNote
+            h2 You are currently not logged in. Please log in or register.
+            a(href="/login") 
+              button.btn.btn-x-large.btn-success(type='button') Log in / Register
             br
           if(user)
             h2 You are currently logged in as #{user.username}
-            a(href="/logout") Logout
-            div(ng-repeat='x in notes | reverse')
-              .row
-                .col-lg-4.col-centered
-                  .note
-                    .note-title {{x.title}}
-                    p {{x.body}}
+            h3 To view your notes click 
+              a(href='#', ng-click='getAll()') #{user.username}'s notes
+    div(ng-repeat='x in notes | reverse')
+      .row
+        .col-lg-4.col-centered
+          .note
+            .note-title {{x.title}}
+            p {{x.body}}
     // modal for creating and editing notes
     modal(title='', visible='showModal')
       form(role='form', ng-submit='submitNote()')

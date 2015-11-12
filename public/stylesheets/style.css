@@ -30,15 +30,24 @@ margin: 0 auto;
     border-style:solid;
     border-color:#ebeb00 #fff;
     /* css3 extras */
-    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+    -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3),
                       -1px 1px 1px rgba(0,0,0,0.2);
-       -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+       -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3),
                       -1px 1px 1px rgba(0,0,0,0.2);
-            box-shadow:0 1px 1px rgba(0,0,0,0.3), 
+            box-shadow:0 1px 1px rgba(0,0,0,0.3),
                       -1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .note-title {
      text-align:center;
      margin-bottom:10px;
+}
+
+.btn-x-large {
+  padding: 18px 28px;
+  font-size: 42px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
 }
