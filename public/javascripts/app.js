@@ -1,7 +1,7 @@
 angular.module('yNoteApp', [])
 .controller('yNoteCtrl', [
-  '$scope', '$http',
-  function($scope, $http){
+  '$scope', '$http', '$window',
+  function($scope, $http, $window){
 
     $scope.notes = [];
     $scope.showModal = false;
@@ -47,6 +47,31 @@ angular.module('yNoteApp', [])
 
         });
     };
+
+    $scope.register = function(user) {
+      console.log("In $scope.register");
+      $http.post('/register', user)
+      .then(function(data) {
+        alert("New user created, welcome to the club, " + user.username + "!!");
+        console.log("This is what data is: " + JSON.stringify(data));
+      },
+      function(err) {
+        console.log("This is the error " + JSON.stringify(err));
+      });
+    };
+
+    $scope.login = function(user) {
+      $http.post('/login', user)
+      .then(function(data) {
+        console.log("You have been logged in, " + user.username);
+        console.log(JSON.stringify(data));
+        $window.location.href = '/';
+      },
+      function(err) {
+        console.log("This is the error " + JSON.stringify(err));
+      });
+    }
+
 
     //angular.element(document).ready($scope.getAll());
 

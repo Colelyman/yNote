@@ -1,5 +1,76 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html(lang='en', ng-app='yNoteApp')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='yNote web app. Your last note taking service.')
+    meta(name='author', content='Cole Lyman')
+    title yNote
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', integrity='sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css', integrity='sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    script(src='https://code.jquery.com/jquery-1.11.3.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', integrity='sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==', crossorigin='anonymous')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js')
+    script(src='javascripts/app.js')
+    script(src='javascripts/modal.js')
+  body(ng-controller='yNoteCtrl')
+    header#top.navbar.navbar-static-top.bs-docs-nav(role='banner')
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', dta-toggle='collapse', data-target='#bs-navbar', aria-controls='bs-navbar', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') yNote
+        nav#bs-navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            if(user)
+              li
+                a(href='#', ng-click='getAll()') my notes
+              li
+                a(href='#', ng-click='createNew()') Create new note
+            li
+              a(href='#') about
+            li
+              a(href='#') api
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#')
+                i.fa.fa-user
+                |  log in
+            li
+              a(href='#')
+                i.fa.fa-question
+                |  help
+    .container-fluid
+      .row
+        .col-md-4.col-centered
+          if(!user)
+            a(href="/login") Login
+            br
+          if(user)
+            h2 You are currently logged in as #{user.username}
+            a(href="/logout") Logout
+            div(ng-repeat='x in notes | reverse')
+              .row
+                .col-md-4.col-centered
+                  .note
+                    .note-title {{x.title}}
+                    p {{x.body}}
+    // modal for creating and editing notes
+    modal(title='', visible='showModal')
+      form(role='form', ng-submit='submitNote()')
+        .form-group
+          label(for='title') New Note:
+          input#note_title.form-control(type='text', ng-model='data.noteTitle', placeholder='Title', ng-required='true')
+        .form-group
+          label(for='body') Body:
+          textarea#note_body.form-control(rows='4', ng-model='data.noteBody', placeholder='Write your note here....', ng-required='true') Enter text here...
+        .form-group
+          label(for='gpa') Tags:
+          input#note_tags.form-control(type='text', ng-model='data.noteTags', placeholder='Tags', ng-required='true')
+        button.btn.btn-default Save
+    // end of modal for creating and editing notes

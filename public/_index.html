@@ -50,31 +50,24 @@
             <a href="#"><i class="fa fa-user"></i> log in</a>
           </li>
           <li>
-            <a href="#"><a class="fa fa-question"></i> help</a>
+            <a href="#"><i class="fa fa-question"></i> help</a>
           </li>
         </ul>
       </nav>
     </div>
   </header>
   <div class="container-fluid">
-    <div class="row">
-      <div class="page-header">
-        <!-- Angular repeat to display all notes from a GET request -->
+    <div ng-repeat="x in notes | reverse">
+     <div class="row">
+       <div class="col-md-4 col-centered">
+          <div class="note">
+              <div class="note-title">{{x.title}}</div>
+              <p>{{x.body}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-
-<div ng-repeat="x in notes | reverse">
- <div class="row">
-   <div class="col-md-4 col-centered">
-      <div class="note">
-          <div class="note-title">{{x.title}}</div>
-          <p>{{x.body}}</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
